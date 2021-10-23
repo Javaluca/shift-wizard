@@ -2,6 +2,7 @@ package com.novihub.shift.engine.impl;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.novihub.logical.tree.LogicalTree;
 import com.novihub.shift.engine.ShiftEngine;
@@ -34,7 +35,7 @@ public class ShiftEngineImpl implements ShiftEngine {
 	public List<LocalDate> evaluate() {
 		return Utils.streamBetweenDates(this.start, this.end)
 				.filter(tree)
-				.toList();
+				.collect(Collectors.toList());
 	}
 
 }
