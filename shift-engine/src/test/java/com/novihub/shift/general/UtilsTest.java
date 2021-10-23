@@ -1,0 +1,38 @@
+package com.novihub.shift.general;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+
+public class UtilsTest {
+
+	@Test
+	public void daysBetweenDatesTest() {
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			Utils.streamBetweenDates(null, null);
+		});
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			Utils.streamBetweenDates(LocalDate.of(2021, Month.JANUARY, 1), null);
+		});
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			Utils.streamBetweenDates(null, LocalDate.of(2021, Month.DECEMBER, 31));
+		});
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			Utils.streamBetweenDates(LocalDate.of(2021, Month.DECEMBER, 31), LocalDate.of(2021, Month.JANUARY, 1));
+		});
+		
+		Stream<LocalDate> dates = Utils.streamBetweenDates(LocalDate.of(2021, Month.JANUARY, 1), LocalDate.of(2021, Month.DECEMBER, 31));
+		assertEquals(365, dates.toList().size());
+		
+		dates = Utils.streamBetweenDates(LocalDate.of(2021, Month.JANUARY, 1), LocalDate.of(2021, Month.JANUARY, 31));
+		assertEquals(31, dates.toList().size());
+	}
+}
