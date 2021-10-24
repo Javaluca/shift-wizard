@@ -2,9 +2,8 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.novihub</groupId>
-    <artifactId>shift-wizard</artifactId>
+    <artifactId>shift-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>logical-tree</artifactId>
-  <packaging>jar</packaging>
+  <artifactId>shift-common</artifactId>
 </project>
